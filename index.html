@@ -1,130 +1,259 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Nguyen Nhat Huy Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Nhuy</title>
 
 <style>
-*{box-sizing:border-box}
-body{
-    margin:0;height:100vh;overflow:hidden;
-    display:flex;align-items:center;justify-content:center;
-    background:url("https://i.imgur.com/8EDOUWx.gif") no-repeat center/cover;
-    font-family:Arial,Helvetica,sans-serif;
-}
-canvas{
-    position:fixed;inset:0;
-    pointer-events:none;
-    z-index:1;
-}
-.container{
-    position:relative;z-index:2;
-    background:rgba(0,0,0,.6);
-    padding:35px 45px;
-    border-radius:18px;
-    text-align:center;
-    box-shadow:0 0 35px rgba(255,0,255,.5);
-    backdrop-filter:blur(4px);
+:root {
+    --bg-url: url('https://i.imgur.com/8EDOUWx.gif');
 }
 
-.galaxy-text{
-    font-weight:bold;
-    font-size:28px;
-    margin:12px 0;
-    background:linear-gradient(45deg,#ff00ff,#00ffff,#7f00ff,#ff1493);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    text-shadow:0 0 18px rgba(255,0,255,.7);
-    opacity:0;
-    transform:translateY(15px);
-    animation:fadeUp 0.8s ease forwards;
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #e5e7eb;
+    background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+        var(--bg-url);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow-x: hidden;
 }
-.title{font-size:38px;margin-bottom:20px}
 
-.zalo-btn,.music-btn{
-    display:inline-block;
-    margin-top:12px;
-    padding:12px 28px;
-    font-size:18px;
-    font-weight:bold;
-    color:#fff;
-    text-decoration:none;
-    border-radius:30px;
-    border:none;
-    cursor:pointer;
-    background:linear-gradient(45deg,#00c6ff,#0072ff);
-    box-shadow:0 0 20px rgba(0,150,255,.8);
-    transition:.3s;
+header {
+    background: transparent;
+    padding: 60px 20px 40px;
+    text-align: center;
+    position: relative;
+    z-index: 5;
 }
-.zalo-btn:hover,.music-btn:hover{transform:scale(1.08)}
 
-@keyframes fadeUp{
-    to{opacity:1;transform:translateY(0)}
+header h1 {
+    margin: 0;
+    font-size: 38px;
+    text-shadow: 0 0 15px rgba(0,0,0,.7);
+}
+
+header p {
+    margin-top: 10px;
+    font-size: 18px;
+    opacity: .9;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 20px auto 40px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 5;
+}
+
+h2 {
+    border-left: 5px solid #3b82f6;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+.product {
+    background: rgba(2,6,23,.85);
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product a {
+    text-decoration: none;
+    background: #3b82f6;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-weight: bold;
+}
+
+.product a:hover {
+    transform: scale(1.05);
+}
+
+.payment p {
+    background: rgba(2,6,23,.85);
+    padding: 12px 15px;
+    border-radius: 10px;
+}
+
+.contact a {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+    padding: 10px 18px;
+    border-radius: 999px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact a:first-child { background: #16a34a; }
+.contact a:last-child { background: #2563eb; }
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(2,6,23,.9);
+    color: #9ca3af;
+    position: relative;
+    z-index: 5;
+}
+
+.music-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #3b82f6;
+    color: #fff;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.sakura {
+    position: fixed;
+    top: -20px;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle at 30% 30%, #ffd1dc, #ff69b4);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(45deg);
+    pointer-events: none;
+    animation: fall linear infinite;
+    opacity: 0.9;
+    z-index: 2;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-20px) translateX(0) rotate(0deg); }
+    100% { transform: translateY(110vh) translateX(100px) rotate(360deg); }
+}
+
+.touch-flower {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle at 30% 30%, #ffd1dc, #ff69b4);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(45deg);
+    animation: pop 0.6s forwards;
+    pointer-events: none;
+    z-index: 9998;
+}
+
+@keyframes pop {
+    0% { transform: scale(0) rotate(0deg); opacity: 1; }
+    100% { transform: scale(1.6) rotate(180deg); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="sakura"></canvas>
-
-<audio id="bgMusic" loop>
-  <source src="https://files.catbox.moe/1zk89s.mp3">
-</audio>
+<header>
+    <h1>NGUYEN NHAT HUY</h1>
+    <p>Uy tín - Độc Quyền - Giá Rẻ - Chất Lượng</p>
+</header>
 
 <div class="container">
-    <div class="galaxy-text title" style="animation-delay:.2s">Nguyen Nhat Huy</div>
-    <div class="galaxy-text" style="animation-delay:.4s">Dịch Vụ Dame Fb</div>
-    <div class="galaxy-text" style="animation-delay:.6s">Dịch Vụ Dame Tiktok</div>
-    <div class="galaxy-text" style="animation-delay:.8s">Reg Pc - File Hỗ Trợ Kéo Tâm</div>
-    <div class="galaxy-text" style="animation-delay:1s">Cheat Ngưng Đọng Free Fire</div>
-    <div class="galaxy-text" style="animation-delay:1.2s">Dpi All Thiết Bị</div>
-    <div class="galaxy-text" style="animation-delay:1.4s">Liên Hệ : 0363376971</div>
 
-    <a class="zalo-btn" style="animation:fadeUp .8s ease forwards;animation-delay:1.6s;opacity:0"
-       href="https://zalo.me/0363376971" target="_blank">nhắn cho huy ở đây </a><br>
+<h2>Bảng Giá Sản Phẩm</h2>
 
-    <button class="music-btn"
-       style="animation:fadeUp .8s ease forwards;animation-delay:1.8s;opacity:0"
-       onclick="toggleMusic()">🎵 Bật / Tắt Nhạc</button>
+<div class="product">
+    <span>Ngưng Động - Key 1 Ngày (25.000đ)</span>
+    <a href="#">Mua Ngay</a>
 </div>
 
+<div class="product">
+    <span>Regedit Mouse - Reg Normal (120.000đ)</span>
+    <a href="#">Mua Ngay</a>
+</div>
+
+<div class="product">
+    <span>Tối Ưu Pc - (100.000đ)</span>
+    <a href="#">Mua Ngay</a>
+</div>
+
+<div class="product">
+    <span>File Hỗ Trợ Kéo Tâm (50.000đ -> 350.000đ)</span>
+    <a href="#">Mua Ngay</a>
+</div>
+
+
+<h2>Shop Nguyen Nhat Huy</h2>
+<div class="Shop">
+    <p>Nguyen Nhat Huy Devloper</p>
+    <p>Lấy Chữ Tín Làm Thương Hiệu</p>
+</div>
+
+<h2>Liên Hệ Với Nguyen Huy</h2>
+<div class="contact">
+    <a href="https://zalo.me/0363376971">Zalo</a>
+    <a href="https://www.facebook.com/devnhathuy?locale=vi_VN">Facebook</a>
+</div>
+
+</div>
+
+<footer>
+© Nguyen Nhat Huy Developer
+</footer>
+
+<audio id="bgMusic" loop>
+    <source src="https://files.catbox.moe/1zk89s.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-btn" id="musicBtn">🎵</div>
+
 <script>
-const music=document.getElementById("bgMusic");
-function toggleMusic(){music.paused?music.play():music.pause()}
+const music = document.getElementById('bgMusic');
+const btn = document.getElementById('musicBtn');
+let playing = false;
 
-const c=document.getElementById("sakura"),ctx=c.getContext("2d");
-function resize(){c.width=innerWidth;c.height=innerHeight}
-resize();addEventListener("resize",resize);
+btn.onclick = () => {
+    if (playing) {
+        music.pause();
+        btn.textContent = '🔇';
+    } else {
+        music.play();
+        btn.textContent = '🎵';
+    }
+    playing = !playing;
+};
 
-const petals=[];
-for(let i=0;i<80;i++){
-  petals.push({
-    x:Math.random()*c.width,
-    y:Math.random()*c.height,
-    r:Math.random()*6+4,
-    s:Math.random()*1+0.5,
-    w:Math.random()*2-1
-  });
+function createSakura() {
+    const s = document.createElement('div');
+    s.className = 'sakura';
+    s.style.left = Math.random() * window.innerWidth + 'px';
+    s.style.animationDuration = (6 + Math.random() * 4) + 's';
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 12000);
 }
-function draw(p){
-  ctx.beginPath();
-  ctx.fillStyle="rgba(255,182,193,0.9)";
-  ctx.shadowBlur=10;
-  ctx.shadowColor="pink";
-  ctx.ellipse(p.x,p.y,p.r,p.r*0.6,0,0,Math.PI*2);
-  ctx.fill();
-}
-(function loop(){
-  ctx.clearRect(0,0,c.width,c.height);
-  petals.forEach(p=>{
-    draw(p);
-    p.y+=p.s;p.x+=p.w;
-    if(p.y>c.height){p.y=-10;p.x=Math.random()*c.width}
-  });
-  requestAnimationFrame(loop);
-})();
+
+setInterval(createSakura, 700);
+
+document.addEventListener('click', e => {
+    const f = document.createElement('div');
+    f.className = 'touch-flower';
+    f.style.left = (e.clientX - 10) + 'px';
+    f.style.top = (e.clientY - 10) + 'px';
+    document.body.appendChild(f);
+    setTimeout(() => f.remove(), 600);
+});
 </script>
 
 </body>
